@@ -6,11 +6,11 @@ Coding challenge for Automated testing
 - In the command line, navigate to this repo in your project directory
 - Run `yarn` to install the dependencies in the `yarn.lock` file
 - Run `npm install` to install the dependencies in the `package.json` file
-- Test script `receiptUploadDelete.js` can be executed using `nightwatch automation/receiptUploadDelete.js`
+- Test script `receiptUploadDelete.js` can be executed by running `nightwatch automation/receiptUploadDelete.js`
 
-## Test Cases
+## Other Test Cases that can be created
 - Settings Page
-  - Add account
+  - Add account (requires valid credit card/banking institution login)
     - 18 individual tests for a _successful_ integration with each partner
     - 18 individual tests for _unsuccessful_ sign in for each partner
     - 18 individual tests for verifying new sign-ups lead to partner website
@@ -26,7 +26,7 @@ Coding challenge for Automated testing
   - Add and Delete a note for a receipt
   - Validate visibility of `Paid` banner across both panes of the uploaded receipt
   - Successfully integrate receipt with some/all partners
-  - Add tags
+  - Add/Remove tags
   
 - Search (requires an upload of atleast one receipt matching each criteria to validate accuracy), based on
   - Date
@@ -34,3 +34,17 @@ Coding challenge for Automated testing
   - Supplier
   - Keyword
   - Document type
+  
+### About the script
+The test script `receiptUploadDelete.js` tests the following in its flow:
+  - Validating the different components on the Login page
+  - Performing a successful login
+  - Uploading a receipt and publishing it
+  - Checking the presence of the various integration options of Hubdocs' partners
+  - Deleting the uploaded receipt
+  - Logging out
+  
+The test script performs these functions by interacting with page objects that have been conveniently placed in files specific to that page/operation. Each object contains its `locateStrategy` (xpath, css, etc.) and `selector` (element ID as loaded in the DOM) which are then incorporated in dedicated functions that can be used across the test suite. This modular structure not only allows for efficient scalability and reusability but also facilitates easy debugging during probable re-designs or when issues are encountered.
+
+### Enhancements
+This test suite can be scaled to test more UI of the platform for better coverage. This suite can also be integrated with `Artillery` to conduct load testing to help potentially improve on performance. Using `Travis CI` can allow reporting directly into a Slack channel to increase transparency across the team.
