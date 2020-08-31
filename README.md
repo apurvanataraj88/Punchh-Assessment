@@ -34,4 +34,4 @@ Coding challenge for Automated testing
   - Supplier
   - Keyword
   - Document type
-  These would require an upload of atleast one receipt matching each criteria to validate accuracy
+These would require an upload of atleast one receipt matching each criteria to validate accuracy
