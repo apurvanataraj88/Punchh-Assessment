@@ -26,7 +26,7 @@ Coding challenge for Automated testing
   - Add and Delete a note for a receipt
   - Validate visibility of `Paid` banner across both panes of the uploaded receipt
   - Successfully integrate receipt with some/all partners
-  - Add tags
+  - Add/Remove tags
   
 - Search (requires an upload of atleast one receipt matching each criteria to validate accuracy), based on
   - Date
