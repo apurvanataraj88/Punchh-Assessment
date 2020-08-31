@@ -8,7 +8,7 @@ Coding challenge for Automated testing
 - Run `npm install` to install the dependencies in the `package.json` file
 - Test script `receiptUploadDelete.js` can be executed by running `nightwatch automation/receiptUploadDelete.js`
 
-## Test Cases
+## Other Test Cases that can be created
 - Settings Page
   - Add account (requires valid credit card/banking institution login)
     - 18 individual tests for a _successful_ integration with each partner
