@@ -6,7 +6,7 @@ Coding challenge for Automated testing
 - In the command line, navigate to this repo in your project directory
 - Run `yarn` to install the dependencies in the `yarn.lock` file
 - Run `npm install` to install the dependencies in the `package.json` file
-- Test script `receiptUploadDelete.js` can be executed using `nightwatch automation/receiptUploadDelete.js`
+- Test script `receiptUploadDelete.js` can be executed by running `nightwatch automation/receiptUploadDelete.js`
 
 ## Test Cases
 - Settings Page
