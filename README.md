@@ -44,7 +44,7 @@ The test script `receiptUploadDelete.js` tests the following in its flow:
   - Deleting the uploaded receipt
   - Logging out
   
-The test script performs these functions by interacting with page objects that have been conveniently placed in files specific to that page/operation. Each object contains its `locateStrategy` (xpath, css, etc.) and `selector` (element as loaded in the DOM) which are then incorporated in dedicated functions that can be used across the test suite. This modular structure not only allows for efficient scalability and reusability but also facilitates easy debugging during probable re-designs or when issues are encountered.
+The test script performs these functions by interacting with page objects that have been conveniently placed in files specific to that page/operation. Each object contains its `locateStrategy` (xpath, css, etc.) and `selector` (element ID as loaded in the DOM) which are then incorporated in dedicated functions that can be used across the test suite. This modular structure not only allows for efficient scalability and reusability but also facilitates easy debugging during probable re-designs or when issues are encountered.
 
 ### Enhancements
 This test suite can be scaled to test more UI of the platform for better coverage. This suite can also be integrated with `Artillery` to conduct load testing to help potentially improve on performance. Using `Travis CI` can allow reporting directly into a Slack channel to increase transparency across the team.
