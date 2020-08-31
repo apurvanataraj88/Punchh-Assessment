@@ -28,11 +28,9 @@ Coding challenge for Automated testing
   - Successfully integrate receipt with some/all partners
   - Add tags
   
-- Search, based on
+- Search (requires an upload of atleast one receipt matching each criteria to validate accuracy), based on
   - Date
   - Amount
   - Supplier
   - Keyword
   - Document type
-
-These would require an upload of atleast one receipt matching each criteria to validate accuracy
