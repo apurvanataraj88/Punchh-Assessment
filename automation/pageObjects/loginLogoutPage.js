@@ -68,7 +68,7 @@ module.exports = {
       }
     },
     commands: [
-      { // Validate Login Page
+    { // Validate Login Page
       validateLoginPage(timeout) {
         return this.navigate().waitForElementVisible('@root', timeout)
           .waitForElementVisible('@signInBannerTag', timeout)
@@ -80,15 +80,15 @@ module.exports = {
           .waitForElementVisible('@forgotPasswordTag', timeout)
           .waitForElementVisible('@signUpButton', timeout)
           .waitForElementVisible('@privacyPolicy', timeout).pause(2000)
-        }
-      },
-      { // Successful Login
-        successfulLogin(email, password, timeout) {
-          return this.waitForElementVisible('@emailTag', timeout).setValue('@emailTag', email)
-            .waitForElementVisible('@passwordTag', timeout).setValue('@passwordTag', password)
-            .waitForElementVisible('@rememberMeTag', timeout).click('@rememberMeTag')
-            .waitForElementVisible('@signInButton', timeout).click('@signInButton')
-            .waitForElementVisible('@addAccountTag', timeout).pause(2000)
+      }
+    },
+    { // Successful Login
+      successfulLogin(email, password, timeout) {
+        return this.waitForElementVisible('@emailTag', timeout).setValue('@emailTag', email)
+          .waitForElementVisible('@passwordTag', timeout).setValue('@passwordTag', password)
+          .waitForElementVisible('@rememberMeTag', timeout).click('@rememberMeTag')
+          .waitForElementVisible('@signInButton', timeout).click('@signInButton')
+          .waitForElementVisible('@addAccountTag', timeout).pause(2000)
       }
     },
     { // Successful Logout
