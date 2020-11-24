@@ -1,0 +1,460 @@
+{
+	"info": {
+		"_postman_id": "e1ff20d7-faaa-48db-9d32-deb5bbde16d3",
+		"name": "PunchhAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Business",
+			"item": [
+				{
+					"name": "List of businesses",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "90baf2d5-d0b4-4463-ae00-7c3c9cfa7c1d",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{businessURL}}",
+							"host": [
+								"{{businessURL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new business",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f19139da-7fb3-4e48-8137-d35e36beb988",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"newBusinessId\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 6,\n    \"business_name\": \"Target\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{businessURL}}",
+							"host": [
+								"{{businessURL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update business",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea2d8f01-7615-42d6-83cb-3885cfc47ed9",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"newBusinessName\", jsonData.business);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 6,\n    \"business\": \"Sears\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{businessURL}}/{{newBusinessId}}",
+							"host": [
+								"{{businessURL}}"
+							],
+							"path": [
+								"{{newBusinessId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check new addition",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "53fa32a5-e7af-4e98-a789-ffed9ef8684f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Recently added record\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[pm.environment.get(\"newBusinessId\")-1]).exist",
+									"});",
+									"",
+									"pm.test(\"Check name is updated\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[pm.environment.get(\"newBusinessId\")-1].business).to.equal(pm.environment.get(\"newBusinessName\"))",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{businessURL}}",
+							"host": [
+								"{{businessURL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a business",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "45d22c4d-d49b-4afd-97b5-795b1fe92619",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{businessURL}}/{{newBusinessId}}",
+							"host": [
+								"{{businessURL}}"
+							],
+							"path": [
+								"{{newBusinessId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check new business is deleted",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "64a11dc8-a6bd-4e6e-886b-9322db2d21c6",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Recently added record deleted\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[pm.environment.get(\"newBusinessId\")-1]).not.exist",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{businessURL}}",
+							"host": [
+								"{{businessURL}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Location",
+			"item": [
+				{
+					"name": "Business locations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{locationURL}}",
+							"host": [
+								"{{locationURL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new location for business",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "708b7f5e-8564-40c4-a21a-550935e85a7e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"newLocationId\", jsonData.id);",
+									"pm.environment.set(\"newLocationName\", jsonData.location_name);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 8,\n    \"location_name\": \"Mississauga\",\n    \"business_id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{locationURL}}",
+							"host": [
+								"{{locationURL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check addition of new location",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a6e4a326-ad4d-4008-aa67-7616b2d6762a",
+								"exec": [
+									"pm.test(\"Check new location name is added\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[pm.environment.get(\"newLocationId\")-1].location_name).to.equal(pm.environment.get(\"newLocationName\"))",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{locationURL}}",
+							"host": [
+								"{{locationURL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update location of existing business",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb0dd14a-9f8b-466a-b9c5-e969cdba91af",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"newLocationName\", jsonData.location_name);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 8,\n    \"location_name\": \"Brampton\",\n    \"business_id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{locationURL}}/{{newLocationId}}",
+							"host": [
+								"{{locationURL}}"
+							],
+							"path": [
+								"{{newLocationId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check location name is updated",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "963e4224-5546-445d-aeaa-e62046cc36c6",
+								"exec": [
+									"pm.test(\"Check location name has been updated\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[pm.environment.get(\"newLocationId\")-1].location_name).to.equal(pm.environment.get(\"newLocationName\"))",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{locationURL}}",
+							"host": [
+								"{{locationURL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleted recently added location",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "68970c4c-6891-4e46-8c64-a1c6265141f0",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{locationURL}}/{{newLocationId}}",
+							"host": [
+								"{{locationURL}}"
+							],
+							"path": [
+								"{{newLocationId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check new location is deleted",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5dec79fe-242e-4a33-b800-10c8b30045b6",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Recently added record deleted\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[pm.environment.get(\"newLocationId\")-1]).not.exist",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{locationURL}}",
+							"host": [
+								"{{locationURL}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
