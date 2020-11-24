@@ -3,7 +3,8 @@ Coding assessment for Automated testing
 
 ## Setup using Nightwatch
 - Clone this repo into your project directory
-- In the command line, navigate to this repo in your project directory
+- In the command line, navigate to this repo in your project directory with `cd Punchh-Challenge/web`
+- Install nightwatch with `npm install nightwatch`
 - Run `yarn` to install the dependencies in the `yarn.lock` file
 - Run `npm install` to install the dependencies in the `package.json` file
 - Page objects for this assessment are detailed in the `resultsForSearchTerm.js` file
