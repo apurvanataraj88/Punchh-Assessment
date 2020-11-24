@@ -1,0 +1,61 @@
+{
+"business": [
+{
+"id": 1,
+"business_name": "Del Taco"
+},
+{
+"id": 2,
+"business_name": "Starbucks"
+},
+{
+"id": 3,
+"business_name": "PapaJohns"
+},
+{
+"id": 4,
+"business_name": "EPL"
+},
+{
+"id": 5,
+"business_name": "McDonalds"
+}
+],
+"locations": [
+{
+"id": 1,
+"location_name": "Toronto Yonge/Finch",
+"business_id": 1
+},
+{
+"id": 2,
+"location_name": "Toronto Front/Bay",
+"business_id": 1
+},
+{
+"id": 3,
+"location_name": "Toronto Steele/Finch",
+"business_id": 2
+},
+{
+"id": 4,
+"location_name": "Toronto King/Yonge",
+"business_id": 3
+},
+{
+"id": 5,
+"location_name": "Toronto King/Bay",
+"business_id": 3
+},
+{
+"id": 6,
+"location_name": "Toronto Queen/Spadina",
+"business_id": 4
+},
+{
+"id": 7,
+"location_name": "Toronto Front/York",
+"business_id": 5
+}
+]
+}
