@@ -1,5 +1,5 @@
 # PunchhCodingChallenge
-Coding assessment for Automated testing
+Coding assessment for Automated testing - Web
 
 ## Setup using Nightwatch
 - Clone this repo into your project directory
