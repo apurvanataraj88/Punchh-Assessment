@@ -14,7 +14,7 @@ Coding assessment for Automated testing - API
 - We will now setup the test suite for the API using Postman. This can be downloaded from https://www.postman.com/downloads/.
 - Once installed and launched, we will need to do 2 types of imports:
 ### Collection
-  - On the top left side of the Postman tool, click on `Import` and then either drag-and-drop the collection `PunchhAPI.postman_collection.json` or use the File explorer/Finder.
+  - On the top left side of the Postman tool, click on `Import` and then either drag-and-drop or use the File explorer/Finder to import the collection `PunchhAPI.postman_collection.json` which should be downloaded.
   - This will now display the collection with its 2 folders for testing requests for `Business` and `Location`
   ### Environment
   - Here we will import the different variables needed throughout the test suite.
@@ -22,7 +22,7 @@ Coding assessment for Automated testing - API
   - Click that, and then click 'Add' in the top right corner of the pane.
   - Click the cancel button.
   - Here, we will click the Import button to get the required environment variables.
-  - Click the Choose Files button and select the `punchhEnv.postman_environment.json` file.
+  - Click the Choose Files button and select the `punchhEnv.postman_environment.json` file which should be downloaded.
   - Close the pane, and we are now ready to run the collection.
 - Click the Runner button on the top-left side and then select the collection `PunchhAPI`
 - The list of requests in this collection are detailed on the right side.
